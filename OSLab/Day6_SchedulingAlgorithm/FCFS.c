@@ -1,5 +1,4 @@
-#include<iostream>
-using namespace std;
+#include<stdio.h>
 
 void findWaitingTime(int processes[], int n, int bt[],
 								int wt[], int at[])
@@ -30,24 +29,18 @@ void findavgTime(int processes[], int n, int bt[], int at[])
 	findWaitingTime(processes, n, bt, wt, at);
 
 	findTurnAroundTime(processes, n, bt, wt, tat);
-	cout << "Processes " << " Burst Time " << " Arrival Time "
-		<< " Waiting Time " << " Turn-Around Time "
-		<< " Completion Time \n";
+	printf("Processes   Burst Time  Arrival Time  Waiting Time  Turn-Around Time  Completion Time \n");
 	int total_wt = 0, total_tat = 0;
 	for (int i = 0 ; i < n ; i++)
 	{
 		total_wt = total_wt + wt[i];
 		total_tat = total_tat + tat[i];
 		int compl_time = tat[i] + at[i];
-		cout << " " << i+1 << "\t\t" << bt[i] << "\t\t"
-			<< at[i] << "\t\t" << wt[i] << "\t\t "
-			<< tat[i] << "\t\t " << compl_time << endl;
+        printf("  %d \t\t %d \t\t %d \t\t %d \t\t%d \t\t %d \n",i+1,bt[i],at[i],wt[i],tat[i],compl_time);
 	}
 
-	cout << "Average waiting time = "
-		<< (float)total_wt / (float)n;
-	cout << "\nAverage turn around time = "
-		<< (float)total_tat / (float)n;
+    printf("Average waiting time = %lf\n",(float)total_wt / (float)n);
+    printf("Average turn around time =  %lf\n",(float)total_tat / (float)n);
 }
 
 int main()
@@ -57,7 +50,7 @@ int main()
 
 	int burst_time[] = {24, 3, 3};
 
-	int arrival_time[] = {0, 3, 6};
+	int arrival_time[] = {0, 3, 5};
 
 	findavgTime(processes, n, burst_time, arrival_time);
 
